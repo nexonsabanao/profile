@@ -56,9 +56,11 @@ export const AtsResumeModal: React.FC<AtsResumeModalProps> = ({ isOpen, onClose 
           <meta charset="utf-8" />
           <title>${profileData.fullNameFormal} - Resume</title>
           <style>
+            /* margin: 0 forces browsers to drop the default print header/footer
+               (date, page title, page numbers, and site URL) */
             @page {
               size: A4 portrait;
-              margin: 14mm 16mm;
+              margin: 0;
             }
             * {
               box-sizing: border-box;
@@ -69,9 +71,20 @@ export const AtsResumeModal: React.FC<AtsResumeModalProps> = ({ isOpen, onClose 
               background-color: #ffffff;
               line-height: 1.45;
               font-size: 10pt;
+              /* same visual margins the @page rule used to provide */
+              padding: 14mm 16mm;
               margin: 0;
-              padding: 0;
             }
+            /* --- replicate the Tailwind utilities used in the resume markup --- */
+            .text-center { text-align: center; }
+            .font-bold { font-weight: 700; }
+            .font-semibold { font-weight: 600; }
+            .uppercase { text-transform: uppercase; }
+            #ats-resume-document-content > * + * { margin-top: 14px; }
+            .space-y-2 > * + * { margin-top: 8px; }
+            .space-y-1 > * + * { margin-top: 4px; }
+            .space-y-0\\.5 > * + * { margin-top: 2px; }
+            /* --- document typography --- */
             h1 {
               font-size: 18pt;
               margin: 0 0 2px 0;
@@ -79,6 +92,7 @@ export const AtsResumeModal: React.FC<AtsResumeModalProps> = ({ isOpen, onClose 
               text-transform: uppercase;
               letter-spacing: -0.02em;
               text-align: center;
+              color: #020617;
             }
             .degree-title {
               font-size: 11pt;
@@ -89,6 +103,10 @@ export const AtsResumeModal: React.FC<AtsResumeModalProps> = ({ isOpen, onClose 
               margin-bottom: 4px;
             }
             .contact-line {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              column-gap: 8px;
               font-size: 9pt;
               color: #475569;
               text-align: center;
@@ -96,8 +114,13 @@ export const AtsResumeModal: React.FC<AtsResumeModalProps> = ({ isOpen, onClose 
             }
             .header-divider {
               border-bottom: 1.5px solid #0f172a;
-              padding-bottom: 8px;
+              padding-bottom: 12px;
               margin-bottom: 12px;
+            }
+            p {
+              margin: 0;
+              font-size: 9.5pt;
+              color: #334155;
             }
             .section-title {
               font-size: 10.5pt;
@@ -118,6 +141,10 @@ export const AtsResumeModal: React.FC<AtsResumeModalProps> = ({ isOpen, onClose 
               font-size: 10pt;
               color: #0f172a;
             }
+            .item-row span:last-child {
+              font-weight: 400;
+              color: #475569;
+            }
             .item-sub {
               font-size: 9pt;
               color: #64748b;
@@ -127,6 +154,7 @@ export const AtsResumeModal: React.FC<AtsResumeModalProps> = ({ isOpen, onClose 
             ul {
               margin: 3px 0 6px 0;
               padding-left: 18px;
+              list-style: disc outside;
             }
             li {
               margin-bottom: 2px;
@@ -143,7 +171,7 @@ export const AtsResumeModal: React.FC<AtsResumeModalProps> = ({ isOpen, onClose 
           </style>
         </head>
         <body>
-          ${printArea.innerHTML}
+          ${printArea.outerHTML}
         </body>
       </html>
     `);
