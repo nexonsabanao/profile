@@ -24,6 +24,13 @@
   outline-offset: 2px;
 }
 
+/* form fields use their own focus border instead of the big global outline */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+}
+
 /* Modern Sleek Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 7px;
