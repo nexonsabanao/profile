@@ -6,9 +6,9 @@ import {
   ExperienceItem,
 } from '../types/portfolio';
 
-import avatarImg from '../assets/images/avatar_engineer_nexon_1790681128830.jpg';
-import projectNutriorityImg from '../assets/images/project_nutriority_android_1790681456445.jpg';
-import projectFloodAlertImg from '../assets/images/project_flood_alert_iot_1790681473669.jpg';
+import avatarImg from '../assets/images/grad_pic.JPG';
+import projectNutriorityImg from '../assets/images/nutriority_showcase_v2_1790691562399.jpg';
+import projectFloodAlertImg from '../assets/images/briane_flood_alert_showcase_1790692098215.jpg';
 
 export const profileData: ProfileData = {
   name: 'Nexon Jr. Y. Sabañao',
